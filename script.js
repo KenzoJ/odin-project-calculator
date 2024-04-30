@@ -1,91 +1,35 @@
-let playerScore = 0
-let computerScore = 0
-let currentRound = 0
-let playerCounter = document.querySelector("#player")
-let computerCounter = document.querySelector("#computer")
-let currentComputerChoice = document.querySelector("#computer-choice-round")
-let finalWinner = document.querySelector("#winner")
+const btn1 = document.querySelector("#btn1")
 
 
-const btn = document.querySelectorAll(".buttons")
-//button is clicked and gets the computer choice
-//then uses Round to mark the score and update the standings
-btn.forEach((button) =>{
-    button.addEventListener("click", function(e) {
-        let playerSelection = e.target.innerText
-        let computerSelection = getComputerChoice();
-        Round(playerSelection, computerSelection)
-        }
-    )})
+function add(a, b) {return a + b}
 
-function getComputerChoice() {
-    let computerHand = Math.floor(Math.random() * 3);
-    switch (computerHand) {
-        case 0:
-            currentComputerChoice.innerText = "Rock"
-            return "rock";
-        case 1:
-            currentComputerChoice.innerText = "Scissors"
-            return "scissors"
-        case 2: 
-            currentComputerChoice.innerText = "Paper"
-            return "paper"
-    }
-}
+function subtract(a, b) {return a - b}
 
-//checks the winner and updates the standings
-function Round(playerSelection, computerSelection) {
-    currentRound++
+function multiply(a, b) {return a * b}
 
-    document.querySelector("#current-rounds").innerHTML = currentRound
-    if (playerSelection === "Rock") {
-        if (computerSelection === "rock") {
-            tie();
-        } else if (computerSelection === "scissors") {
-            won();    
-        } else {
-            lost();
-        }
-    } else if (playerSelection === "Paper") {
-        if (computerSelection === "paper") {
-            tie();
-        } else if (computerSelection === "rock") {
-            won();     
-        } else {
-            lost();
-        }
-    } else if (playerSelection === "Scissors") {
-        if (computerSelection === "scissors") {
-            tie();
-        } else if (computerSelection === "paper") {
-            won();     
-        } else {
-            lost();
-        }
+function divide(a, b) {return a / b}
+
+function operate(operator, num1, num2) {
     
-    }}
-
-function won() {
-    playerScore++
-    document.querySelector("#player").innerHTML = playerScore
-    if (currentRound === 5) checkWinner()
+    if (operator === "+") {
+        return add(num1, num2)
+    } else if (operator === "-") {
+        return subtract(num1, num2)
+    } else if (operator === "*") {
+        return multiply(num1, num2)
+    } else if (operator === "/") {
+        return divide(num1, num2)
+    } return "error"
 }
 
-function lost() {
-    computerScore++
-    document.querySelector("#computer").innerHTML = computerScore
-    if (currentRound === 5) checkWinner()
+function clearTerminal() {
+    console.log("cleared!")
 }
 
-function tie() {
-    if (currentRound === 5) checkWinner()
-}
 
-function checkWinner() {
-    if (playerScore > computerScore) {
-        finalWinner.innerText = "You won!"
-    } else if (playerScore < computerScore) {
-        finalWinner.innerText = "You lost..."
-    
-    } 
-}
+
+/* let num1 = parseInt(prompt("number 1"), 10)
+let operator = prompt("operator")
+let num2 = parseInt(prompt("number 2"), 10)
+console.log(operate(operator, num1, num2))
+ */

@@ -1,11 +1,39 @@
 body {
-    display:flex
-    flex-direction column;
+    background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
 
 }
 
-.buttons button{
-    height: 150px;
-    width: 200px;
-    background-color: #04AA6D
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    min-height: 500px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.calculator {
+    width: 400px;
+    border: 2px solid red;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+button {
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: rgb(105, 105, 105);
+}
+
+#screen {
+    border: 2px solid rgb(157, 157, 157);
+    background-color: rgb(206, 206, 206);
+    padding: 10px;
+   
+    margin-bottom: 20px;
 }
