@@ -16,15 +16,11 @@ body {
 
 .calculator {
     width: 80vh;
-    height: 80vh;
+    height: 92vh;
     border: 2px solid whitesmoke;
     border-radius: 15px;
     padding: 20px;
     background-color: rgb(204, 204, 204);
-}
-
-.row {
-    display: flex;
 }
 
 button {
@@ -50,11 +46,17 @@ button:hover {
     margin-top: 5vh;
     padding-top: 10px;
     height: 10vh;
+    min-height: 70px;
     margin-bottom: 10px;
     border-style: ridge;
+    display: flex;
+    flex-direction: column;
 }
 
-#bottom-rows {
+#bottom-rows,
+.three-row,
+.row
+ {
     display: flex;
 }
 
@@ -65,13 +67,17 @@ button:hover {
 #second-section {
     flex-grow: 1;
     display: flex
-
-}
-
-.three-row{
-    display: flex;
 }
 
 #plus {
     flex-shrink: 2;
+}
+
+#top-screen {
+    color: rgb(100, 100, 100);
+    font-size: 6vh;
+}
+
+#bottom-screen {
+    font-size: 10vh;
 }

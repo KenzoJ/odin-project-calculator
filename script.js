@@ -1,54 +1,59 @@
 const equals = document.querySelector("#equals");
-const screen = document.querySelector("#screen")
+const topScreen = document.querySelector("#top-screen")
+const bottomScreen = document.querySelector("#bottom-screen")
 const buttons = document.querySelectorAll(".number")
 const operators = document.querySelectorAll(".operator")
 
-function add(a, b) {return a + b}
-
-function subtract(a, b) {return a - b}
-
-function multiply(a, b) {return a * b}
-
-function divide(a, b) {return a / b}
-
 function operate(operator, num1, num2) {
-    
     if (operator === "+") {
-        return add(num1, num2)
+        return num1 + num2
     } else if (operator === "-") {
-        return subtract(num1, num2)
+        return num1 - num2
     } else if (operator === "*") {
-        return multiply(num1, num2)
+        return num1 * num2
     } else if (operator === "/") {
-        return divide(num1, num2)
-    } return "error"
+        return num1 / num2
+    } 
 }
 
+//clears terminal with C
 function clearTerminal() {
-    screen.textContent = "0"
+    bottomScreen.textContent = ""
+    topScreen.textContent = ""
+    
 }
 
-buttons.forEach(button => {
-    button.addEventListener("click", event => {
-        screen.textContent = screen.textContent + event.currentTarget.innerText
+
+function main() {
+    //allow screen first num
+    buttons.forEach(button => {
+        button.addEventListener("click", event => {
+            bottomScreen.textContent = bottomScreen.textContent + event.currentTarget.innerText
+        })
     })
-})
 
-equals.addEventListener("click", () => {
-    operate()
-})
+    //store operator pressed
+    //move first number to second screen
+    //clear current numbers
+    operators.forEach(operator => {
+        operator.addEventListener("click", event => {
+           let currentOperator = event.currentTarget.innerText
+           let firstNum = parseInt(bottomScreen.textContent, 10)
+           topScreen.textContent = firstNum + currentOperator
+           bottomScreen.textContent = ""
+           equals.addEventListener("click", () => {
+            let secondNum = parseInt(bottomScreen.textContent, 10)
+            bottomScreen.textContent = operate(currentOperator, firstNum, secondNum)
+            topScreen.innerHTML = `&nbsp`
+            firstNum = 0
+            secondNum = 0
+        })
+    })})
+    
+    //puts first number and second number 
+    //in correct place and returns final result
+    
+    
+}
 
-
-operators.forEach(operator => {
-    operator.addEventListener("click", event => {
-       event.currentTarget.innerText
-
-    })
-})
-
-
-/* let num1 = parseInt(prompt("number 1"), 10)
-let operator = prompt("operator")
-let num2 = parseInt(prompt("number 2"), 10)
-console.log(operate(operator, num1, num2))
- */
+main()
