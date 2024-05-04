@@ -20,6 +20,8 @@ body {
     border: 2px solid whitesmoke;
     border-radius: 15px;
     padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     background-color: rgb(204, 204, 204);
 }
 
@@ -45,7 +47,7 @@ button:hover {
     background-color: rgb(206, 206, 206);
     margin-top: 5vh;
     padding-top: 10px;
-    height: 10vh;
+    height: 20vh;
     min-height: 70px;
     margin-bottom: 10px;
     border-style: ridge;
@@ -80,4 +82,9 @@ button:hover {
 
 #bottom-screen {
     font-size: 10vh;
+}
+
+.clicked {
+    background-color: rgb(48, 49, 55);
+    box-shadow: inset 4px 5px rgba(0, 0, 0, 0.1);
 }
